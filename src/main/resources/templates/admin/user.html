@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org" xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <title>User</title>
+</head>
+<body>
+<p th:text="${'Username: ' + user.getUsername()}">username</p>
+<p th:text="${'Password: ' + user.getPassword()}">password</p>
+<p th:text="${'Name: ' + user.getName()}">name</p>
+<p th:text="${'Surname: ' + user.getSurname()}">surname</p>
+<p th:text="${'Email: ' + user.getEmail()}">email</p>
+<p th:text="${'Roles: ' + user.getRoles()}">roles</p>
+<br><br>
+<div th:insert="~{fragment :: header}"> </div>
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>all users</title>
+</head>
+<body>
+<h3>Table user list</h3>
+<div>
+    <table class="bordered-table">
+        <tr>
+            <th>Username</th>
+            <th>Password</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>Roles</th>
+            <th>Edit</th>
+            <th>Delete</th>
+        </tr>
+        <tr th:each="user : ${users}">
+            <td>
+                <a th:href="@{/user(username=${user.getUsername()})}" th:text="${user.getUsername()}">username</a>
+            </td>
+            <td>
+                <a th:text="${user.getPassword()}">password</a>
+            </td>
+            <td>
+                <a th:text="${user.getName()}">name</a>
+            </td>
+            <td>
+                <a th:text="${user.getSurname()}">surname</a>
+            </td>
+            <td>
+                <a th:text="${user.getEmail()}">email</a>
+            </td>
+            <td>
+                <a th:text="${user.getRoles()}">roles</a>
+            </td>
+            <td>
+                <form th:method="GET" th:action="@{/edit}">
+                    <input type="hidden" name="id" th:value="${user.getId()}"/>
+                    <button type="submit" style="display: inline;">Edit</button>
+                </form>
+            </td>
+            <td>
+                <form th:method="POST" th:action="@{/delete}">
+                    <input type="hidden" name="id" th:value="${user.getId()}"/>
+                    <button type="submit" style="display: inline;">Delete</button>
+                </form>
+            </td>
+        </tr>
+    </table>
+    <br>
+
+    <form th:method="GET" th:action="@{/new}">
+        <input type="submit" value="Create new user"/>
+    </form>
+    <br>
+    <div th:insert="~{fragment :: header}"> </div>
+
+    <style>
+        .bordered-table {
+            border-collapse: collapse;
+        }
+
+        .bordered-table th, .bordered-table td {
+            border: 1px solid black;
+            padding: 5px;
+        }
+    </style>
+
+</div>
+</body>
+</html>
