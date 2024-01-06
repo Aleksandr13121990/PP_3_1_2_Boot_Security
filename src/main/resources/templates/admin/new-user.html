@@ -6,7 +6,7 @@
 </head>
 <body>
 
-<form th:method="POST" th:action="@{/}" th:object="${user}">
+<form th:method="POST" th:action="@{/admin}" th:object="${user}">
     <label for="username">Enter username: </label>
     <input type="text" th:field="*{username}" id="username"/>
     <div th:if="${errors}">
@@ -16,35 +16,35 @@
     <div th:if="${usernameErrors}">
         <p style="color: red" th:text="${usernameErrors}">Errors message</p>
     </div>
-    <br>
+    <br><br>
     <label for="password">Enter password: </label>
     <input type="password" th:field="*{password}" id="password"/>
     <div th:if="${errors}">
         <p style="color: red" th:each="error : ${errors}" th:if="${error.field == 'password'}"
            th:text="${error.defaultMessage}">Errors message</p>
     </div>
-    <br>
+    <br><br>
     <label for="name">Enter name: </label>
     <input type="text" th:field="*{name}" id="name"/>
     <div th:if="${errors}">
         <p style="color: red" th:each="error : ${errors}" th:if="${error.field == 'name'}"
            th:text="${error.defaultMessage}">Errors message</p>
     </div>
-    <br>
+    <br><br>
     <label for="surname">Enter surname: </label>
     <input type="text" th:field="*{surname}" id="surname"/>
     <div th:if="${errors}">
         <p style="color: red" th:each="error : ${errors}" th:if="${error.field == 'surname'}"
            th:text="${error.defaultMessage}">Errors message</p>
     </div>
-    <br>
+    <br><br>
     <label for="email">Enter email: </label>
     <input type="text" th:field="*{email}" id="email"/>
     <div th:if="${errors}">
         <p style="color: red" th:each="error : ${errors}" th:if="${error.field == 'email'}"
            th:text="${error.defaultMessage}">Errors message</p>
     </div>
-  <br>
+  <br><br>
     <label>Roles:
         <input type="checkbox" name="roles"
                th:each="role : ${allRoles}"
